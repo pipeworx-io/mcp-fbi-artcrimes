@@ -1,0 +1,20 @@
+{
+  "name": "@pipeworx/mcp-fbi-artcrimes",
+  "version": "0.1.0",
+  "description": "FBI Art Crimes MCP — FBI National Stolen Art File (free, no auth).",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "fbi-artcrimes"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pipeworx-io/mcp-fbi-artcrimes"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
