@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-fbi-artcrimes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FBI Art Crimes MCP — FBI National Stolen Art File (free, no auth).",
   "type": "module",
   "main": "src/index.ts",
