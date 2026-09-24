@@ -2,7 +2,7 @@
 
 FBI Art Crimes MCP — FBI National Stolen Art File (free, no auth).
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1481+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1679+ live data sources.
 
 ## Tools
 
@@ -18,8 +18,8 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 ```json
 {
   "mcpServers": {
-    "fbi_artcrimes": {
-      "url": "https://gateway.pipeworx.io/fbi_artcrimes/mcp"
+    "fbi-artcrimes": {
+      "url": "https://gateway.pipeworx.io/fbi-artcrimes/mcp"
     }
   }
 }
@@ -27,7 +27,7 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 
 ### What this endpoint actually serves
 
-`tools/list` at `https://gateway.pipeworx.io/fbi_artcrimes/mcp` returns the tools in the table
+`tools/list` at `https://gateway.pipeworx.io/fbi-artcrimes/mcp` returns the tools in the table
 above **plus the shared Pipeworx meta-tools** — `ask_pipeworx`,
 `discover_tools`, `search_within`, `remember`/`recall` and the rest of the
 gateway-wide set. So the tool count you see is larger than this table: a
@@ -55,9 +55,45 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1481+ data sources. The
+Both URLs reach the same gateway and the same 1679+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
+
+## No MCP client? Call it over HTTP
+
+```bash
+curl -X POST https://gateway.pipeworx.io/v1/tools/list_art_crimes \
+  -H 'Content-Type: application/json' \
+  -d '{}'
+```
+
+No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/list_art_crimes`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
+
+## Standalone (no gateway account)
+
+This package also runs as a local stdio MCP server — no Pipeworx account, no
+gateway round-trip:
+
+```json
+{
+  "mcpServers": {
+    "fbi-artcrimes": {
+      "command": "npx",
+      "args": ["-y", "@pipeworx/mcp-fbi-artcrimes"]
+    }
+  }
+}
+```
+
+Or run it directly to confirm it starts:
+
+```bash
+npx -y @pipeworx/mcp-fbi-artcrimes
+```
+
+It speaks MCP over stdin/stdout and answers `initialize`/`tools/list`/`tools/call`
+for **only** this pack's tools — none of the shared meta-tools the gateway
+connection above adds. Same source, same tools, no ask_pipeworx routing.
 
 ## Using with ask_pipeworx
 
@@ -78,13 +114,3 @@ The gateway picks the right tool and fills the arguments automatically.
 ## License
 
 MIT
-
-## No MCP client? Call it over HTTP
-
-```bash
-curl -X POST https://gateway.pipeworx.io/v1/tools/list_art_crimes \
-  -H 'Content-Type: application/json' \
-  -d '{"title":"painting","maker":"Picasso"}'
-```
-
-No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/list_art_crimes`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
