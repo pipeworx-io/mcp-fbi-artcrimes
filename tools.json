@@ -1,0 +1,40 @@
+[
+  {
+    "name": "list_art_crimes",
+    "description": "Browse or search the FBI National Stolen Art File — stolen and missing artworks under active FBI art theft investigations. Returns artwork UIDs, titles, descriptions, maker/artist, materials, measurements, period, and a thumbnail image URL. Filter by title or maker substring. Use page to paginate. Pass a UID into get_art_crime for the full record.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "number",
+          "description": "Page number for pagination (default 1)."
+        },
+        "title": {
+          "type": "string",
+          "description": "Filter by title substring (e.g., a work or object name)."
+        },
+        "maker": {
+          "type": "string",
+          "description": "Filter by artist/maker substring (e.g., a painter or publisher)."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_art_crime",
+    "description": "Get the full record for a single stolen or missing artwork from the FBI National Stolen Art File by UID. Returns title, full description, crime category, maker/artist, materials, measurements, period, additional data, all images, and the FBI case URL. Use a UID returned by list_art_crimes.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The artwork UID from a list_art_crimes result."
+        }
+      },
+      "required": [
+        "uid"
+      ]
+    }
+  }
+]

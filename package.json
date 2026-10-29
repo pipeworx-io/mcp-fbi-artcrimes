@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-fbi-artcrimes",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "FBI Art Crimes MCP — FBI National Stolen Art File (free, no auth).",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-fbi-artcrimes": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "fbi-artcrimes"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-fbi-artcrimes.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/fbi-artcrimes",
   "pipeworx": {
-    "sourceHash": "v1-c0d5a95d5b08f7de878da119131dd0e284fd2e2f3a3147bd7b8ca011e0d7cc75",
-    "sourceCommit": "722087a9bda73f85942e8f6bbfd598544cb0d490"
+    "mode": "gateway",
+    "slug": "fbi-artcrimes",
+    "gatewaySlug": "fbi_artcrimes",
+    "sourceHash": "v1-dfe0c8388eacb3f39e2727bad1be9cf1463e35e25250aef23a636c22073632ed",
+    "sourceCommit": "bb047243cf27f32453103de186b8e6a8b6a1ce79"
   }
 }
