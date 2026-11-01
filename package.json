@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-fbi-artcrimes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "FBI Art Crimes MCP — FBI National Stolen Art File (free, no auth).",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "fbi-artcrimes",
     "gatewaySlug": "fbi_artcrimes",
-    "sourceHash": "v1-dfe0c8388eacb3f39e2727bad1be9cf1463e35e25250aef23a636c22073632ed",
-    "sourceCommit": "bb047243cf27f32453103de186b8e6a8b6a1ce79"
+    "sourceHash": "v1-663a223588722539a69062de3c01ced8ebf2352d6a79b54e8dd87fe1bf8e7da1",
+    "sourceCommit": "d35e32c1ffe988e24d391dedb35666387fd2b3d6"
   }
 }
